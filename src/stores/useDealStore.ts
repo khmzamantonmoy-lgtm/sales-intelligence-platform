@@ -1,12 +1,16 @@
 import { create } from 'zustand'
 
+interface Stakeholder { name: string; role: string }
+interface Competitor { name: string; strength: string }
+interface Objection { text: string; response: string }
+
 interface Deal {
   name: string
   stage: string
   value: number
-  stakeholders: { name: string; role: string }[]
-  competitors: { name: string; strength: string }[]
-  objections: { text: string; response: string }[]
+  stakeholders: Stakeholder[]
+  competitors: Competitor[]
+  objections: Objection[]
   rfpNotes: string
   narrative: string
 }
@@ -18,14 +22,9 @@ interface DealState {
 }
 
 const defaultDeal: Deal = {
-  name: 'New Deal',
-  stage: 'Discovery',
-  value: 0,
-  stakeholders: [],
-  competitors: [],
-  objections: [],
-  rfpNotes: '',
-  narrative: '',
+  name: 'New Deal', stage: 'Discovery', value: 0,
+  stakeholders: [], competitors: [], objections: [],
+  rfpNotes: '', narrative: '',
 }
 
 export const useDealStore = create<DealState>((set) => ({

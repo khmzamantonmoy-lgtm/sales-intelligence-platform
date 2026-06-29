@@ -1,42 +1,24 @@
-
-import './App.css'
-import './index.css'
+import { useState } from 'react'
 import NavBar from './components/NavBar'
 import DealCommandCenter from './components/DealCommandCenter'
 import RFPIntelligence from './components/RFPIntelligence'
 import CompetitiveWarRoom from './components/CompetitiveWarRoom'
 import ObjectionSimulator from './components/ObjectionSimulator'
 import NarrativeBuilder from './components/NarrativeBuilder'
-import { useDealStore } from './stores/useDealStore'
 
-function App() {
-  const deal = useDealStore((s) => s.deal)
-
+export default function App() {
+  const [section, setSection] = useState('Deal Command Center')
+  const render = () => {
+    if (section === 'RFP Intelligence') return <RFPIntelligence />
+    if (section === 'Competitive War Room') return <CompetitiveWarRoom />
+    if (section === 'Objection Simulator') return <ObjectionSimulator />
+    if (section === 'Narrative Builder') return <NarrativeBuilder />
+    return <DealCommandCenter />
+  }
   return (
-    <div className="min-h-screen bg-gray-50 text-gray-900">
-      <NavBar />
-      <main className="max-w-7xl mx-auto p-6 space-y-6">
-        <header className="flex items-center justify-between">
-          <div>
-            <h1 className="text-3xl font-semibold">SIP — Sales Intelligence Platform</h1>
-            <p className="text-sm text-gray-500">Active deal: {deal.name} • Stage: {deal.stage}</p>
-          </div>
-        </header>
-
-        <section className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div className="col-span-1 lg:col-span-2 space-y-6">
-            <DealCommandCenter />
-            <RFPIntelligence />
-            <CompetitiveWarRoom />
-          </div>
-          <aside className="col-span-1 space-y-6">
-            <ObjectionSimulator />
-            <NarrativeBuilder />
-          </aside>
-        </section>
-      </main>
+    <div className="min-h-screen bg-gray-100">
+      <NavBar section={section} setSection={setSection} />
+      <main className="max-w-5xl mx-auto py-6">{render()}</main>
     </div>
   )
 }
-
-export default App
