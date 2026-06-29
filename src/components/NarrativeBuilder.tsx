@@ -1,5 +1,5 @@
-import React from 'react'
-import useDealStore from '../stores/useDealStore'
+
+import { useDealStore } from '../stores/useDealStore'
 
 export default function NarrativeBuilder() {
   const narrative = useDealStore((s) => s.deal.narrative)

@@ -1,5 +1,5 @@
-import React from 'react'
-import useDealStore from '../stores/useDealStore'
+
+import { useDealStore } from '../stores/useDealStore'
 
 export default function RFPIntelligence() {
   const rfpNotes = useDealStore((s) => s.deal.rfpNotes)

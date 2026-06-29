@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import useDealStore from '../stores/useDealStore'
+import { useState } from 'react'
+import { useDealStore } from '../stores/useDealStore'
 
 export default function ObjectionSimulator() {
   const objections = useDealStore((s) => s.deal.objections)

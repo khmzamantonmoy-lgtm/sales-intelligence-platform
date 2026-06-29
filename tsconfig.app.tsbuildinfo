@@ -1,0 +1,1 @@
+{"root":["./src/App.tsx","./src/main.tsx","./src/components/CompetitiveWarRoom.tsx","./src/components/DealCommandCenter.tsx","./src/components/NarrativeBuilder.tsx","./src/components/NavBar.tsx","./src/components/ObjectionSimulator.tsx","./src/components/RFPIntelligence.tsx","./src/lib/supabaseClient.ts","./src/stores/useDealStore.ts"],"errors":true,"version":"6.0.3"}

@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import useDealStore from '../stores/useDealStore'
+import { useState } from 'react'
+import { useDealStore } from '../stores/useDealStore'
 
 export default function CompetitiveWarRoom() {
   const competitors = useDealStore((s) => s.deal.competitors)

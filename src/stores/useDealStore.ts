@@ -1,30 +1,30 @@
-import create from 'zustand'
+import { create } from 'zustand'
 
-export type Deal = {
-  id: string
+interface Deal {
   name: string
   stage: string
-  stakeholders: string[]
+  value: number
+  stakeholders: { name: string; role: string }[]
+  competitors: { name: string; strength: string }[]
+  objections: { text: string; response: string }[]
   rfpNotes: string
-  competitors: string[]
-  objections: string[]
   narrative: string
 }
 
-type DealState = {
+interface DealState {
   deal: Deal
   setDeal: (partial: Partial<Deal>) => void
   resetDeal: () => void
 }
 
 const defaultDeal: Deal = {
-  id: 'deal-1',
-  name: 'New Strategic Deal',
+  name: 'New Deal',
   stage: 'Discovery',
+  value: 0,
   stakeholders: [],
-  rfpNotes: '',
   competitors: [],
   objections: [],
+  rfpNotes: '',
   narrative: '',
 }
 
@@ -33,5 +33,3 @@ export const useDealStore = create<DealState>((set) => ({
   setDeal: (partial) => set((state) => ({ deal: { ...state.deal, ...partial } })),
   resetDeal: () => set({ deal: defaultDeal }),
 }))
-
-export default useDealStore
